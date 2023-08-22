@@ -6,7 +6,7 @@ setup(
     author='ganyu',
     author_email='amosbow@163.com',
     url='https://github.com/bowofamos/amos#readme',
-    description=u'MQ Consumer',
+    description='MQ Consumer',
     packages=['AmosMsg'],
     install_requires=[
         "PyYAML",
