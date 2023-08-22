@@ -170,8 +170,9 @@ if __name__ == '__main__':
         port=5672,
         v_host="your_virtual_host",
     )
+    amos.create_channel()
     # The value of exchange and queue could be empty 
-    # Please use below method to config exchange
+    # Please use below method to config exchangeß
     amos.send_conf(exchange='your_exchange')
     amos.send_msg("""{"abc":"123"}""")
 ```

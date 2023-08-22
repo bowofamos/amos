@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='AmosMsg',
-    version='0.0.2',
+    version='0.0.3',
     author='ganyu',
     author_email='amosbow@163.com',
     url='https://github.com/bowofamos/amos#readme',
