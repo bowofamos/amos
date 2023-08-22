@@ -134,3 +134,44 @@ ca: "your/path/to/ca"
 crt: "your/path/to/crt"
 key: "your/path/to/key"
 ```
+
+### 5. Send your message to MQ
+your code v1
+```python
+import json
+from AmosMsg.AmosMsg import AmosMsg
+
+if __name__ == '__main__':
+    amos = AmosMsg(
+        msg_user='consumer_user', 
+        msg_pass='consumer_password', 
+        enable_ssl=False,               
+        host="your.rabbitmq.host", 
+        port=5672,
+        v_host="your_virtual_host",
+        exchange="your_exchange",  # could be empty follow v2
+        queue="your_queue",        # could be empty
+    )
+    amos.create_channel()
+    amos.send_msg("""{"abc":"123"}""")
+```
+
+your code v2
+```python
+import json
+from AmosMsg.AmosMsg import AmosMsg
+
+if __name__ == '__main__':
+    amos = AmosMsg(
+        msg_user='consumer_user', 
+        msg_pass='consumer_password', 
+        enable_ssl=False,               
+        host="your.rabbitmq.host", 
+        port=5672,
+        v_host="your_virtual_host",
+    )
+    # The value of exchange and queue could be empty 
+    # Please use below method to config exchange
+    amos.send_conf(exchange='your_exchange')
+    amos.send_msg("""{"abc":"123"}""")
+```

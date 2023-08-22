@@ -14,6 +14,9 @@ class AmosMsg:
     __msg_connection = None
     __queue_name = None
 
+    __send_exchange = None
+    __send_routing_key = ""
+
     def __init__(self, msg_user, msg_pass, config_path=None, enable_ssl=False,
                  host=None, port=None, v_host=None, exchange=None, queue=None,
                  ca=None, crt=None, key=None
@@ -95,3 +98,13 @@ class AmosMsg:
         except KeyboardInterrupt:
             print("Consumer is Stopped by manually")
 
+    def send_conf(self, exchange, routing_key=""):
+        self.__exchange = exchange
+        self.__send_routing_key = routing_key
+
+    def send_msg(self, msg_body):
+        self.__msg_connection.basic_publish(
+            exchange=self.__exchange,
+            routing_key=self.__send_routing_key,
+            body=msg_body
+        )
